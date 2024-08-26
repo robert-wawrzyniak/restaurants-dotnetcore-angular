@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Restaurants.DataAccess.Interfaces</AssemblyName>
+    <RootNamespace>Restaurants.DataAccess.Interfaces</RootNamespace>
+  </PropertyGroup>
+
+</Project>

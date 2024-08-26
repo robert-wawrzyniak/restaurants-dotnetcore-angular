@@ -1,0 +1,29 @@
+<button mat-button routerLink="/">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<h1>Create new account!</h1>
+<form [formGroup]="formGroup">
+  <mat-form-field class="input-full-width">
+    <input matInput formControlName="name" placeholder="Login" />
+  </mat-form-field>
+
+  <mat-form-field class="input-full-width">
+    <input
+      matInput
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+  </mat-form-field>
+
+  <p *ngIf="registrationFailed" class="error">
+    Wrong credentials, login failed.
+  </p>
+  <button mat-raised-button color="primary" (click)="register()">
+    Sign up
+  </button>
+</form>
+<div *ngIf="registrationSucceded">
+  Registration has been successful! You can now try to
+  <a routerLink="/">login</a>;
+</div>

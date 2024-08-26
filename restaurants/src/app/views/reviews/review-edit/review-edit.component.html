@@ -1,0 +1,32 @@
+<button mat-button routerLink="/user/main">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<h1>Review restaurant!</h1>
+<form>
+  <div>
+    <mat-icon
+      *ngFor="let i of [1, 2, 3, 4, 5]"
+      [ngClass]="{ selected: isStarSelected(i) }"
+      (click)="clickedStar(i)"
+      >{{ icon(i) }}</mat-icon
+    >
+  </div>
+
+  <mat-form-field class="input-full-width">
+    <textarea
+      matInput
+      name="comment"
+      [(ngModel)]="review.comment"
+      placeholder="Comment"
+    ></textarea>
+  </mat-form-field>
+
+  <button
+    [disabled]="review.rate < 1 || !review.comment"
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+  >
+    Add review
+  </button>
+</form>

@@ -1,0 +1,41 @@
+<button mat-button routerLink="/owner/main">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<h1>Reply to a user review.</h1>
+<div *ngIf="review">
+  <div>
+    <span class="label">User:</span>
+    <span class="value">{{ review.user }}</span>
+  </div>
+  <div>
+    <span class="label">Visit date:</span>
+    <span class="value">{{ review.visitDate }}</span>
+  </div>
+  <div>
+    <span class="label">Rate:</span>
+    <span class="value">{{ review.rate }}</span>
+  </div>
+  <div>
+    <p>Comment:</p>
+    <p>{{ review.comment }}</p>
+  </div>
+</div>
+<form>
+  <mat-form-field class="input-full-width">
+    <textarea
+      matInput
+      [(ngModel)]="reply"
+      name="reply"
+      placeholder="Reply"
+    ></textarea>
+  </mat-form-field>
+
+  <button
+    [disabled]="!reply"
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+  >
+    Save reply
+  </button>
+</form>

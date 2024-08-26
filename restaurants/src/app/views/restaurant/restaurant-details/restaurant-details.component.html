@@ -1,0 +1,109 @@
+<button mat-button (click)="back()">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<h1>Restaurant details:</h1>
+<div *ngIf="restaurant">
+  <div>
+    <span class="label">Name:</span>
+    <span class="value">{{ restaurant.name }}</span>
+  </div>
+  <div>
+    <span class="label">City:</span>
+    <span class="value">{{ restaurant.city }}</span>
+  </div>
+  <div>
+    <span class="label">Address:</span>
+    <span class="value">{{ restaurant.address }}</span>
+  </div>
+  <div>
+    <span class="label">Owner:</span>
+    <span class="value">{{ restaurant.owner.name }}</span>
+  </div>
+  <div *ngIf="restaurant.highestRatedReview">
+    <div>
+      <span class="label">Average rating:</span>
+      <span class="value">{{ restaurant.averageRating }}</span>
+    </div>
+    <div>
+      <h3>Highest rated review:</h3>
+      <div>
+        <span class="label">User:</span>
+        <span class="value">{{ restaurant.highestRatedReview.user }}</span>
+      </div>
+      <div>
+        <span class="label">Visit date:</span>
+        <span class="value">{{ restaurant.highestRatedReview.visitDate }}</span>
+      </div>
+      <div>
+        <span class="label">Rate:</span>
+        <span class="value">{{ restaurant.highestRatedReview.rate }}</span>
+      </div>
+      <div>
+        <span class="label">Comment:</span>
+        <span class="value">{{ restaurant.highestRatedReview.comment }}</span>
+      </div>
+      <div *ngIf="restaurant.highestRatedReview.reply">
+        <span class="label">Comment:</span>
+        <span class="value">{{ restaurant.highestRatedReview.reply }}</span>
+      </div>
+    </div>
+    <div>
+      <h3>Lowest rated review:</h3>
+      <div>
+        <span class="label">User:</span>
+        <span class="value">{{ restaurant.lowestRatedReview.user }}</span>
+      </div>
+      <div>
+        <span class="label">Visit date:</span>
+        <span class="value">{{ restaurant.lowestRatedReview.visitDate }}</span>
+      </div>
+      <div>
+        <span class="label">Rate:</span>
+        <span class="value">{{ restaurant.lowestRatedReview.rate }}</span>
+      </div>
+      <div>
+        <span class="label">Comment:</span>
+        <span class="value">{{ restaurant.lowestRatedReview.comment }}</span>
+      </div>
+      <div *ngIf="restaurant.lowestRatedReview.reply">
+        <span class="label">Comment:</span>
+        <span class="value">{{ restaurant.lowestRatedReview.reply }}</span>
+      </div>
+    </div>
+    <div>
+      <h3>Last reviews</h3>
+      <table
+        mat-table
+        [dataSource]="restaurant.lastReviews"
+        class="mat-elevation-z8"
+      >
+        <ng-container matColumnDef="user">
+          <th mat-header-cell *matHeaderCellDef>User</th>
+          <td mat-cell *matCellDef="let element">{{ element.user }}</td>
+        </ng-container>
+        <ng-container matColumnDef="visitDate">
+          <th mat-header-cell *matHeaderCellDef>Visit date</th>
+          <td mat-cell *matCellDef="let element">{{ element.visitDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="rate">
+          <th mat-header-cell *matHeaderCellDef>Rate</th>
+          <td mat-cell *matCellDef="let element">{{ element.rate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef>Comment</th>
+          <td mat-cell *matCellDef="let element">{{ element.comment }}</td>
+        </ng-container>
+        <ng-container matColumnDef="reply">
+          <th mat-header-cell *matHeaderCellDef>Reply</th>
+          <td mat-cell *matCellDef="let element">{{ element.reply }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsOnReviews"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumnsOnReviews"
+        ></tr>
+      </table>
+    </div>
+  </div>
+</div>

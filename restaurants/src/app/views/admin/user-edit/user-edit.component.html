@@ -1,0 +1,16 @@
+<button mat-button routerLink="/admin/main">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<h1>Edit user permissions</h1>
+<form [formGroup]="formGroup">
+  <mat-form-field class="input-full-width">
+    <input matInput formControlName="name" placeholder="Login" />
+  </mat-form-field>
+
+  <mat-checkbox formControlName="isAdmin">Is admin</mat-checkbox>
+  <mat-checkbox formControlName="isOwner">Is owner</mat-checkbox>
+
+  <button mat-raised-button color="primary" (click)="update()">
+    Save
+  </button>
+</form>

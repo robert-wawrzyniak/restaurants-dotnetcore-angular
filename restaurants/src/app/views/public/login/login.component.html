@@ -1,0 +1,19 @@
+<h1>Welcome to restaurants best rating system!</h1>
+<form [formGroup]="formGroup">
+  <mat-form-field class="input-full-width">
+    <input matInput formControlName="name" placeholder="Login" />
+  </mat-form-field>
+
+  <mat-form-field class="input-full-width">
+    <input
+      matInput
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+  </mat-form-field>
+
+  <p *ngIf="loginFailed" class="error">Wrong credentials, login failed.</p>
+  <button mat-raised-button color="primary" (click)="login()">Sign in</button>
+  <button mat-raised-button routerLink="register">Sign up</button>
+</form>
